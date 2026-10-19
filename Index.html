@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física II° Medio | Trabajo y Potencia</title>
+<style>
+/* Diseño editorial académico · sin dependencias externas */
+:root{--navy:#10233d;--navy2:#1b3555;--blue:#2468d9;--blue2:#edf4ff;--ink:#16263e;--muted:#63758d;--line:#dce5ef;--bg:#f4f7fb;--green:#167451;--red:#b13d4c;--white:#fff;--teal:#3cc5b3;--shadow:0 16px 44px rgba(19,39,67,.055)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+button,input{font:inherit}
+button{cursor:pointer;border:0;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s}
+button:active:not(:disabled){transform:translateY(1px)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #74b3ff;outline-offset:3px}
+button:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+header{background:#101f36;color:white;padding:17px clamp(20px,4.3vw,72px);display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:92px;border-bottom:1px solid #ffffff12}
+.brand{display:flex;align-items:center;gap:16px;min-width:0}
+.atom{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;font-size:28px;color:#b6fff0;background:linear-gradient(135deg,#234765,#1c3658);border:1px solid #ffffff22;flex:none}
+.brand h1{margin:0;font-size:clamp(1.18rem,2vw,1.55rem);font-weight:780;letter-spacing:-.035em;line-height:1.25}
+.brand p{margin:5px 0 0;font-size:clamp(.76rem,1.2vw,.89rem);color:#c0ccdb;line-height:1.45}
+.header-side{display:flex;align-items:center;gap:20px}
+.motto{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:.78rem;color:#b4c6dc;font-weight:500;letter-spacing:.025em;text-align:right}
+.motto strong{font-size:.72rem;letter-spacing:.14em;color:#83e6d4;font-weight:750}
+.top-home{padding:10px 17px;border-radius:10px;background:#ffffff13;color:#fff;border:1px solid #ffffff30;font-weight:700;white-space:nowrap}
+.top-home:hover{background:#ffffff24}
+/* Inicio */
+.home{max-width:1200px;margin:36px auto 44px;padding:0 22px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 91% 8%,#315776 0,transparent 37%),linear-gradient(120deg,#142b49,#102139 76%);border:1px solid #24405d;border-radius:24px;min-height:328px;padding:clamp(30px,5.2vw,64px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);align-items:center;gap:35px;box-shadow:0 24px 54px rgba(16,35,61,.13)}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(90deg,transparent 35%,#000 100%)}
+.hero-copy,.hero-visual{position:relative;z-index:1}
+.home-eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid #ffffff30;background:#ffffff0e;color:#baf4e9;padding:8px 12px;border-radius:100px;font-size:.72rem;font-weight:800;letter-spacing:.13em;margin-bottom:22px}
+.home-eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#53e1c7;box-shadow:0 0 0 4px #53e1c720}
+.home h2{color:#fff;font-size:clamp(2.15rem,4.2vw,3.65rem);font-weight:790;letter-spacing:-.055em;line-height:1.08;margin:0 0 18px;max-width:580px}
+.hero-copy>p{color:#c4d2e2;max-width:550px;font-size:1rem;line-height:1.7;margin:0}
+.hero-visual{display:flex;align-items:center;justify-content:center;min-height:205px}
+.formula-display{width:min(100%,365px);padding:25px 27px;background:#ffffff0c;border:1px solid #ffffff26;box-shadow:0 20px 38px #06152626;border-radius:18px;backdrop-filter:blur(4px);transform:rotate(-2deg)}
+.formula-kicker{color:#8de8d9;font-size:.71rem;font-weight:800;letter-spacing:.16em;margin-bottom:10px}
+.formula-main{font-family:Cambria,Georgia,serif;font-size:clamp(1.55rem,3vw,2.25rem);letter-spacing:.01em;color:white;white-space:nowrap}
+.formula-rule{height:1px;background:#ffffff24;margin:17px 0}
+.formula-caption{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#d2deea;font-size:.83rem}
+.formula-caption b{font-family:Cambria,Georgia,serif;font-size:1.35rem;color:#8de8d9;font-weight:500}
+.section-intro{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:35px 2px 18px}
+.section-intro h3{font-size:1.3rem;letter-spacing:-.035em;margin:0;color:var(--navy)}
+.section-intro p{color:var(--muted);margin:5px 0 0;font-size:.91rem}
+.section-intro .mini-count{font-size:.76rem;letter-spacing:.08em;font-weight:800;color:#64778f;white-space:nowrap}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.mode-card{display:flex;flex-direction:column;align-items:flex-start;gap:0;min-height:280px;width:100%;padding:29px 30px 25px;background:#fff;border:1px solid var(--line);border-radius:19px;text-align:left;box-shadow:var(--shadow);color:var(--ink);position:relative;overflow:hidden}
+.mode-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:#2c72dd;opacity:0;transition:opacity .2s}
+.mode-card:hover,.mode-card:focus-visible{border-color:#9dbbe8;box-shadow:0 20px 46px #173b6718;transform:translateY(-3px)}
+.mode-card:hover:before,.mode-card:focus-visible:before{opacity:1}
+.mode-card:nth-child(2):before{background:#16a391}
+.mode-symbol{width:57px;height:57px;border-radius:15px;background:#eaf2ff;color:#2162ca;display:grid;place-items:center;margin-bottom:22px}
+.mode-card:nth-child(2) .mode-symbol{background:#e5f7f3;color:#117e72}
+.mode-symbol svg{width:29px;height:29px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mode-title{font-size:1.36rem;line-height:1.2;letter-spacing:-.035em;font-weight:780;color:var(--navy);margin-bottom:10px}
+.mode-description{font-size:.94rem;color:#607188;line-height:1.65;font-weight:400;max-width:450px;margin-bottom:24px}
+.mode-meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto;color:#607188;font-size:.78rem;font-weight:700}
+.mode-meta span{background:#f2f5fa;border:1px solid #e5ebf3;padding:6px 10px;border-radius:7px}
+.mode-action{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:20px;border-top:1px solid #edf1f6;padding-top:17px;font-size:.89rem;font-weight:800;color:#2268d2}
+.mode-card:nth-child(2) .mode-action{color:#147c70}
+.mode-action .arrow{font-size:1.3rem;line-height:1}
+.home-source{text-align:center;font-size:.82rem;color:#7a899b;margin:26px 0 0}
+/* Pantallas de trabajo */
+.layout{display:grid;grid-template-columns:minmax(255px,325px) minmax(0,1fr);gap:22px;max-width:1290px;margin:30px auto 50px;padding:0 22px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow)}
+.theory{padding:26px 25px;height:max-content;position:sticky;top:22px}
+.theory h2{font-size:1.07rem;letter-spacing:-.025em;color:var(--navy);margin:0 0 12px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.section{padding:17px 0;border-bottom:1px solid #edf1f6}
+.section:last-of-type{border-bottom:0}
+.section h3{font-size:.91rem;font-weight:750;margin:0 0 9px;color:#203653;display:flex;align-items:center;gap:9px}
+.section p{font-size:.87rem;color:#50647d;margin:8px 0;line-height:1.6}
+.num{display:inline-grid;place-items:center;background:#e9f1fc;color:#245fba;border-radius:8px;width:25px;height:25px;flex:none;font-size:.76rem;font-weight:800}
+.formula{background:#f0f5fc;color:#1d497e;border:1px solid #e3edf9;border-radius:10px;padding:13px 10px;text-align:center;font-family:Cambria,Georgia,serif;font-size:1.35rem;font-weight:700;margin:12px 0}
+.small{font-size:.84rem;color:var(--muted);line-height:1.6}
+.theory ul{margin:10px 0 0;padding-left:18px;font-size:.86rem;color:#52657e;line-height:1.75}
+.callout{background:#eaf5f2;border:1px solid #d5ebe5;color:#215c54;border-radius:12px;padding:14px 15px;margin-top:18px;font-size:.84rem;line-height:1.65}
+.work{padding:clamp(20px,3vw,34px);min-width:0}
+.worktop{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:23px;border-bottom:1px solid var(--line)}
+.worktop h2{font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.3;letter-spacing:-.035em;color:var(--navy);margin:0}
+.progress-wrap{min-width:190px;max-width:250px;flex:1}
+.progress-label{display:flex;justify-content:space-between;gap:10px;font-size:.78rem;color:var(--muted);margin-bottom:9px}
+.progress-label b{color:#2e537c;font-weight:800}
+.progress{height:7px;background:#e9eff6;border-radius:50px;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#1ba58d,#2874df);border-radius:50px;transition:width .3s ease}
+.instruction{background:#f0f5fc;border-left:3px solid #4685d9;color:#405c7d;border-radius:0 10px 10px 0;padding:14px 17px;margin:24px 0;font-size:.89rem;line-height:1.7}
+.exercise{border:1px solid #e1e8f0;border-radius:15px;padding:clamp(18px,2.7vw,27px);background:#fff}
+.exhead{display:flex;align-items:center;gap:13px;margin-bottom:22px;flex-wrap:wrap}
+.exhead>div:nth-child(2){flex:1;min-width:150px}
+.exhead b{font-size:1rem;color:#213956}
+.exnum{display:grid;place-items:center;background:#1e3f65;color:white;border-radius:12px;width:43px;height:43px;font-size:1.06rem;font-weight:800;flex:none}
+.tag{margin-left:auto;border-radius:100px;background:#e9f2ff;color:#2465bc;padding:6px 12px;font-size:.72rem;letter-spacing:.02em;font-weight:800}
+.prompt,.knowledge-prompt{font-size:clamp(1.05rem,1.7vw,1.23rem);line-height:1.6;font-weight:660;color:#182c45;margin:6px 0 23px}
+.data{background:#f7f9fc;border:1px solid #e9eef5;padding:18px 20px;border-radius:11px;margin-bottom:22px;font-size:.93rem;color:#425874;line-height:1.85}
+.data strong{display:block;font-size:.81rem;text-transform:uppercase;letter-spacing:.08em;color:#5c7290;margin-bottom:8px}
+.answer-label{display:block;font-size:.9rem;font-weight:750;margin:15px 0 8px;color:#2a415f}
+.answer-row{display:flex;gap:10px}
+.answer-row input{flex:1;min-width:0;border:1px solid #bfcfe2;border-radius:10px;padding:13px 15px;font-size:1rem;color:var(--ink);outline-color:var(--blue);background:#fff}
+.answer-row input:disabled{background:#f6f9fc}
+button.primary{display:block;background:#2468d9;color:#fff;border-radius:10px;padding:13px 18px;font-size:.94rem;font-weight:750;width:100%;margin-top:16px;box-shadow:0 5px 12px #2468d922}
+button.primary:hover:not(:disabled){background:#1757be;box-shadow:0 8px 20px #2468d936}
+button.secondary{background:#eef3f9;color:#264969;border:1px solid #e2eaf3;border-radius:10px;padding:11px 17px;font-size:.9rem;font-weight:750}
+button.secondary:hover:not(:disabled){background:#e1ecf9}
+.answer-row button.secondary{min-width:65px;opacity:1;background:#f3f6fa;color:#63758d;cursor:default}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.feedback{display:none;margin-top:17px;padding:16px 18px;border-radius:11px;font-size:.9rem;font-weight:500;line-height:1.7}
+.feedback.good{display:block;background:#ebf8f2;border:1px solid #bfe5d4;color:#166a4a}
+.feedback.bad{display:block;background:#fff1f2;border:1px solid #f2cbd0;color:#a33142}
+.feedback strong{display:block;margin-bottom:5px;font-weight:800}
+.feedback p{margin:6px 0 0}
+.hint{margin-top:19px;border:1px solid #e1e9f2;background:#f7fafd;border-radius:10px;padding:13px 16px;font-size:.88rem;color:#46617e}
+.hint summary{cursor:pointer;font-weight:750;color:#285a91}
+.hint p{margin:11px 0 0}
+.choice-fieldset{border:0;padding:0;margin:0;min-width:0}
+.choices{display:grid;gap:11px}
+.choice{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;border:1px solid #dce6f0;border-radius:11px;background:#fff;cursor:pointer;line-height:1.55;transition:background .16s,border-color .16s,box-shadow .16s}
+.choice:hover:not(.locked){background:#f5f9ff;border-color:#9ab9e3}
+.choice input{accent-color:#2269d5;margin:5px 0 0;flex:0 0 auto;width:17px;height:17px}
+.choice-letter{display:grid;place-items:center;min-width:25px;height:25px;border-radius:7px;background:#f1f5fa;color:#2c5d98;font-size:.8rem;font-weight:800;line-height:1}
+.choice-text{font-size:.93rem;color:#3b506b;flex:1}
+.choice.selected{background:#eef5ff;border-color:#3b78d3;box-shadow:0 0 0 1px #3b78d3}
+.choice.correct{background:#eaf8f1;border-color:#3ba77e}
+.choice.incorrect{background:#fff0f0;border-color:#df7b87}
+.choice.locked{cursor:default}
+.choice.locked:hover{background:#fff;border-color:var(--line)}
+.choice.locked.correct:hover{background:#eaf8f1;border-color:#3ba77e}
+.choice.locked.incorrect:hover{background:#fff0f0;border-color:#df7b87}
+.question-source{margin-top:19px;border-top:1px solid #edf1f6;padding-top:13px;font-size:.78rem}
+.completion{display:none;text-align:center;padding:35px 12px}
+.completion h2{font-size:1.75rem;color:var(--navy);letter-spacing:-.04em;margin:0 0 12px}
+.completion p{color:var(--muted);max-width:550px;margin:0 auto}
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:28px 0}
+.resultbox{background:#f4f7fb;border:1px solid #e8eef5;padding:21px 12px;border-radius:12px;font-size:.83rem;color:#5b6f89}
+.resultbox strong{display:block;font-size:1.75rem;letter-spacing:-.05em;color:#1b466f;margin-bottom:3px}
+.finish-home{width:100%;margin-top:10px}
+.foot{border-top:1px solid #e4ebf4;text-align:center;color:#8090a4;font-size:.78rem;padding:22px 20px 30px;max-width:1200px;margin:0 auto}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:990px){.layout{grid-template-columns:minmax(230px,285px) minmax(0,1fr);gap:14px;padding:0 15px}.theory{padding:20px}.work{padding:22px}.hero{gap:20px}.formula-display{transform:none}}
+@media(max-width:790px){.hero{grid-template-columns:1fr;gap:25px}.hero-visual{min-height:0;justify-content:flex-start}.formula-display{width:100%;max-width:440px}.layout{grid-template-columns:1fr}.theory{position:static;order:2}.work{order:1}.motto{display:none}.home{margin-top:20px}.hero{min-height:0}}
+@media(max-width:620px){header{padding:15px 17px;min-height:78px}.brand{gap:11px}.atom{width:42px;height:42px;border-radius:12px;font-size:23px}.brand h1{font-size:1.05rem}.brand p{font-size:.72rem}.top-home{padding:8px 11px;font-size:.8rem}.home{padding:0 13px;margin:16px auto 30px}.hero{padding:27px 24px;border-radius:17px}.home h2{font-size:2.25rem}.hero-copy>p{font-size:.92rem}.hero-visual{display:none}.section-intro{margin:27px 4px 16px}.section-intro .mini-count{display:none}.mode-grid{grid-template-columns:1fr;gap:13px}.mode-card{min-height:0;padding:23px;border-radius:15px}.mode-symbol{margin-bottom:15px}.mode-description{margin-bottom:17px}.layout{margin:15px auto 30px;padding:0 11px}.work,.theory{padding:17px}.worktop{gap:15px}.progress-wrap{max-width:none;flex-basis:100%}.exercise{padding:16px}.exhead{gap:10px}.tag{margin-left:0}.choice{padding:12px 11px;gap:10px}.choice-text{font-size:.89rem}.answer-row{gap:6px}.nav button{padding:10px 12px;font-size:.82rem}.results{grid-template-columns:1fr}.foot{font-size:.73rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="atom" aria-hidden="true">⚛</div><div><h1>Física | Trabajo y Potencia</h1><p>II° Medio · Prof. Israel Mena · Plataforma interactiva de aprendizaje</p></div></div>
+ <div class="header-side"><div class="motto"><strong>RECURSO EDUCATIVO</strong><span>Física · Educación media</span></div><button type="button" class="top-home" id="headerHome" hidden>← Inicio</button></div>
+</header>
+
+<section id="home" class="home" aria-labelledby="homeTitle">
+ <div class="hero">
+  <div class="hero-copy"><div class="home-eyebrow">FÍSICA · II° MEDIO</div><h2 id="homeTitle">Comprende la física.<br>Aplica lo aprendido.</h2><p>Explora el trabajo y la potencia mecánica a través de actividades progresivas, con retroalimentación inmediata y recursos de apoyo.</p></div>
+  <div class="hero-visual" aria-hidden="true"><div class="formula-display"><div class="formula-kicker">TRABAJO MECÁNICO</div><div class="formula-main">W = F · d · cos(θ)</div><div class="formula-rule"></div><div class="formula-caption"><span>POTENCIA MECÁNICA</span><b>P = W / t</b></div></div></div>
+ </div>
+ <div class="section-intro"><div><h3>Elige tu modalidad de aprendizaje</h3><p>Dos recorridos complementarios, de menor a mayor dificultad.</p></div><div class="mini-count">02 MODALIDADES</div></div>
+ <div class="mode-grid">
+  <button type="button" class="mode-card" id="openExercises"><span class="mode-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="2.5" width="18" height="19" rx="2"/><path d="M7 7.5h10M8 12h2m4 0h2M8 16h2m4 0h2"/></svg></span><span class="mode-title">Ejercicios</span><span class="mode-description">Resuelve 30 problemas numéricos sobre trabajo y potencia, con pistas y verificación inmediata de resultados.</span><span class="mode-meta"><span>30 ejercicios</span><span>5 niveles</span><span>Respuesta numérica</span></span><span class="mode-action">Comenzar ejercicios <span class="arrow" aria-hidden="true">→</span></span></button>
+  <button type="button" class="mode-card" id="openKnowledge"><span class="mode-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5C7.5 4 10 4.5 12 6v15c-2-1.5-4.5-2-8-.5V5.5Zm16 0C16.5 4 14 4.5 12 6v15c2-1.5 4.5-2 8-.5V5.5Z"/><path d="M7 9h2m6 0h2M7 12h2m6 0h2"/></svg></span><span class="mode-title">Conocimientos</span><span class="mode-description">Responde 30 preguntas de selección múltiple y recibe explicaciones para comprender cada alternativa correcta.</span><span class="mode-meta"><span>30 preguntas</span><span>5 niveles</span><span>4 alternativas</span></span><span class="mode-action">Comenzar conocimientos <span class="arrow" aria-hidden="true">→</span></span></button>
+ </div>
+ <p class="home-source">Contenido basado en los materiales de estudio «Trabajo mecánico» y «Potencia mecánica».</p>
+</section>
+<div class="layout" id="learningLayout" hidden>
+<aside class="panel theory">
+ <h2>Formulario y conceptos</h2>
+ <div class="section"><h3><span class="num">1</span>Trabajo mecánico</h3>
+ <p>El trabajo es la energía transferida por una fuerza cuando produce desplazamiento. Si la fuerza es constante:</p>
+ <div class="formula">W = F · d · cos(θ)</div>
+ <div class="small"><b>W:</b> trabajo (J) · <b>F:</b> fuerza (N) · <b>d:</b> desplazamiento (m) · <b>θ:</b> ángulo entre fuerza y desplazamiento.</div>
+ <p class="small">En esta guía solo se usarán θ = 0°, 90° y 180°. Si θ = 0°, el trabajo es positivo (W = F·d); si θ = 90°, es cero; y si θ = 180°, es negativo (W = −F·d).</p></div>
+ <div class="section"><h3><span class="num">2</span>Potencia mecánica</h3><p>La potencia indica qué tan rápido se realiza un trabajo o se transfiere energía.</p>
+ <div class="formula">P = W / t</div><div class="small"><b>P:</b> potencia (W) · <b>W:</b> trabajo (J) · <b>t:</b> tiempo (s).</div>
+ <p class="small">Un watt equivale a un joule por segundo: 1 W = 1 J/s.</p></div>
+ <div class="section"><h3><span class="num">3</span>Relaciones útiles</h3>
+ <ul><li>Fuerza paralela al movimiento: <b>P = F·v</b>.</li><li>Elevación a velocidad constante: <b>W = m·g·h</b>.</li><li>Potencia al elevar: <b>P = m·g·h/t = m·g·v</b>.</li><li>Despeje del tiempo: <b>t = W/P</b>.</li><li>Despeje de la fuerza: <b>F = W/d</b>.</li></ul></div>
+ <div class="section"><h3><span class="num">4</span>Unidades y conversiones</h3>
+ <ul><li>Fuerza: newton (N).</li><li>Distancia/altura: metro (m).</li><li>Tiempo: segundo (s).</li><li>Trabajo/energía: joule (J).</li><li>Potencia: watt (W).</li><li>1 kW = 1000 W; 1 hp ≈ 746 W.</li></ul>
+ <div class="small">Usa g = 9,8 m/s², salvo que el enunciado indique otro valor.</div></div>
+ <div class="callout"><b>Estrategia de resolución</b><br>1. Identifica los datos y la incógnita. 2. Convierte a unidades SI. 3. Selecciona y despeja la fórmula. 4. Sustituye, calcula y escribe la unidad.</div>
+</aside>
+<main class="panel work" id="practiceMain">
+ <div id="exerciseView">
+  <div class="worktop"><h2><span id="heading">Ejercicio 1 de 30</span></h2><div class="progress-wrap"><div class="progress-label"><span>Progreso</span><b id="progressText">0 / 30 correctos</b></div><div class="progress"><div class="bar" id="bar"></div></div></div></div>
+  <div class="instruction">Los ejercicios aumentan progresivamente de dificultad y se organizan en cinco niveles. Lee el enunciado, resuelve el problema y escribe solo el valor numérico. Después selecciona <b>Verificar</b>. Debes responder correctamente para desbloquear el siguiente ejercicio. Los ángulos de aplicación considerados son únicamente 0°, 90° y 180°.</div>
+  <section class="exercise">
+   <div class="exhead"><div class="exnum" id="exnum">1</div><div><b id="topic">Trabajo y potencia</b><div class="small" id="subtopic">Cálculo numérico</div></div><span class="tag" id="tag">Trabajo · Potencia</span></div>
+   <p class="prompt" id="prompt"></p>
+   <div class="data"><strong>Datos e incógnita</strong><div id="data"></div></div>
+   <label class="answer-label" for="answer">Tu respuesta:</label>
+   <div class="answer-row"><input id="answer" type="text" inputmode="decimal" autocomplete="off" placeholder="Ingresa el valor numérico" aria-describedby="unit"><button class="secondary" id="unit" type="button" disabled>SI</button></div>
+   <button class="primary" id="check">✓ Verificar respuesta</button>
+   <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+   <details class="hint"><summary>Ver pista</summary><p id="hint"></p></details>
+  </section>
+  <div class="nav"><button class="secondary" id="prev" disabled>← Anterior</button><button class="secondary" id="next" disabled>Siguiente →</button></div>
+ </div>
+ <div class="completion" id="completion"><h2>Actividad completada</h2><p>Has completado correctamente los 30 ejercicios de trabajo y potencia mecánica.</p><div class="results"><div class="resultbox"><strong id="doneCount">30/30</strong>Ejercicios correctos</div><div class="resultbox"><strong id="attemptCount">—</strong>Intentos registrados</div><div class="resultbox"><strong>100%</strong>Progreso</div></div><button class="primary" id="restart">Volver a practicar</button></div>
+</main>
+
+<main class="panel work" id="knowledgeMain" hidden>
+ <div id="knowledgeView">
+  <div class="worktop"><h2><span id="knowledgeHeading">Pregunta 1 de 30</span></h2><div class="progress-wrap"><div class="progress-label"><span>Respondidas</span><b id="knowledgeProgressText">0 / 30</b></div><div class="progress"><div class="bar" id="knowledgeBar"></div></div></div></div>
+  <div class="instruction">Selecciona una de las <b>cuatro alternativas</b> y presiona <b>Enviar respuesta</b>. Recibirás retroalimentación con la explicación y la alternativa correcta. Las preguntas aumentan de dificultad en cinco niveles.</div>
+  <section class="exercise" aria-labelledby="knowledgePrompt">
+   <div class="exhead"><div class="exnum" id="knowledgeNum">1</div><div><b id="knowledgeTopic">Conceptos</b><div class="small" id="knowledgeLevel">Nivel 1 · Inicial</div></div><span class="tag">Conocimientos</span></div>
+   <h3 class="knowledge-prompt" id="knowledgePrompt"></h3>
+   <form id="knowledgeForm"><fieldset class="choice-fieldset"><legend class="visually-hidden">Selecciona una alternativa</legend><div id="knowledgeChoices" class="choices"></div></fieldset><button class="primary" id="knowledgeCheck" type="submit">Enviar respuesta</button></form>
+   <div id="knowledgeFeedback" class="feedback" role="status" aria-live="polite"></div>
+   <div class="small question-source" id="knowledgeSource"></div>
+  </section>
+  <div class="nav"><button type="button" class="secondary" id="knowledgePrev" disabled>← Anterior</button><button type="button" class="secondary" id="knowledgeNext" disabled>Siguiente →</button></div>
+ </div>
+ <div class="completion" id="knowledgeCompletion"><h2>Evaluación de conocimientos finalizada</h2><p>Revisaste las 30 preguntas, con su retroalimentación y explicación.</p><div class="results"><div class="resultbox"><strong id="knowledgeCorrectCount">0/30</strong>Respuestas correctas</div><div class="resultbox"><strong id="knowledgePercent">0%</strong>Resultado</div><div class="resultbox"><strong id="knowledgeAttempts">30</strong>Preguntas respondidas</div></div><button type="button" class="primary" id="knowledgeRestart">Repetir conocimientos</button><button type="button" class="secondary finish-home" id="knowledgeHome">Volver al inicio</button></div>
+</main>
+</div>
+<div class="foot">Recurso para II° Medio · Ejercicios y conocimientos · Las respuestas se validan localmente en el navegador y no se envían a un servidor.</div>
+<script>
+const exercises = [
+{level:1,levelName:"Inicial",topic:"Trabajo mecánico",tag:"Trabajo",prompt:"Una fuerza de 20 N desplaza una caja 3 m en la misma dirección de la fuerza. ¿Qué trabajo realiza?",data:"F = 20 N<br>d = 3 m<br>θ = 0°<br>Incógnita: W (J)",unit:"J",answer:60,tol:0.01,hint:"Cuando θ = 0°, cos(0°) = 1. Utiliza W = F·d."},
+{level:1,levelName:"Inicial",topic:"Potencia media",tag:"Potencia",prompt:"Una máquina realiza un trabajo de 600 J en 10 s. ¿Cuál es su potencia media?",data:"W = 600 J<br>t = 10 s<br>Incógnita: P (W)",unit:"W",answer:60,tol:0.01,hint:"Utiliza P = W/t: divide el trabajo por el tiempo."},
+{level:1,levelName:"Inicial",topic:"Trabajo mecánico",tag:"Trabajo",prompt:"Una persona empuja un objeto con una fuerza de 45 N durante un desplazamiento de 4 m, en la misma dirección del movimiento. Calcula el trabajo.",data:"F = 45 N<br>d = 4 m<br>θ = 0°<br>Incógnita: W (J)",unit:"J",answer:180,tol:0.01,hint:"Como fuerza y desplazamiento tienen la misma dirección, W = F·d."},
+{level:1,levelName:"Inicial",topic:"Potencia media",tag:"Potencia",prompt:"Un motor realiza 2400 J de trabajo en 30 s. ¿Qué potencia media desarrolla?",data:"W = 2400 J<br>t = 30 s<br>Incógnita: P (W)",unit:"W",answer:80,tol:0.01,hint:"Aplica P = W/t."},
+{level:1,levelName:"Inicial",topic:"Cálculo del tiempo",tag:"Potencia",prompt:"Una máquina realiza 9000 J de trabajo con una potencia constante de 300 W. ¿Cuánto tiempo tarda?",data:"W = 9000 J<br>P = 300 W<br>Incógnita: t (s)",unit:"s",answer:30,tol:0.01,hint:"Despeja el tiempo de P = W/t: t = W/P."},
+{level:1,levelName:"Inicial",topic:"Trabajo mecánico",tag:"Trabajo",prompt:"Una fuerza de 35 N actúa en la misma dirección del desplazamiento de 8 m. ¿Qué trabajo realiza?",data:"F = 35 N<br>d = 8 m<br>θ = 0°<br>Incógnita: W (J)",unit:"J",answer:280,tol:0.01,hint:"Multiplica la fuerza por el desplazamiento porque θ = 0°."},
+
+{level:2,levelName:"Básico",topic:"Trabajo con fuerza perpendicular",tag:"Trabajo",prompt:"Una fuerza de 120 N actúa perpendicularmente al desplazamiento de un objeto, que recorre 5 m. ¿Qué trabajo realiza esa fuerza?",data:"F = 120 N<br>d = 5 m<br>θ = 90°<br>cos(90°) = 0<br>Incógnita: W (J)",unit:"J",answer:0,tol:0.001,hint:"Utiliza W = F·d·cos(θ). Si θ = 90°, el coseno es cero."},
+{level:2,levelName:"Básico",topic:"Trabajo negativo",tag:"Trabajo",prompt:"El rozamiento ejerce una fuerza de 50 N en sentido contrario al desplazamiento de una caja, que avanza 6 m. ¿Qué trabajo realiza el rozamiento?",data:"F = 50 N<br>d = 6 m<br>θ = 180°<br>cos(180°) = −1<br>Incógnita: W (J)",unit:"J",answer:-300,tol:0.01,hint:"La fuerza se opone al desplazamiento, por lo que el trabajo es negativo: W = −F·d."},
+{level:2,levelName:"Básico",topic:"Despeje de fuerza",tag:"Trabajo",prompt:"Una fuerza realiza 1500 J de trabajo al desplazar un objeto 10 m en la misma dirección. ¿Cuál es la magnitud de la fuerza?",data:"W = 1500 J<br>d = 10 m<br>θ = 0°<br>Incógnita: F (N)",unit:"N",answer:150,tol:0.01,hint:"Despeja F de W = F·d: F = W/d."},
+{level:2,levelName:"Básico",topic:"Despeje de distancia",tag:"Trabajo",prompt:"Una fuerza de 80 N realiza 960 J de trabajo en la misma dirección del desplazamiento. ¿Qué distancia recorre el objeto?",data:"F = 80 N<br>W = 960 J<br>θ = 0°<br>Incógnita: d (m)",unit:"m",answer:12,tol:0.01,hint:"Despeja d = W/F."},
+{level:2,levelName:"Básico",topic:"Trabajo con ángulo",tag:"Trabajo",prompt:"Una fuerza de 70 N desplaza un objeto 6 m en la misma dirección de la fuerza. Calcula el trabajo realizado.",data:"F = 70 N<br>d = 6 m<br>θ = 0°<br>Incógnita: W (J)",unit:"J",answer:420,tol:0.01,hint:"W = F·d·cos(θ). Para θ = 0°, el coseno vale 1."},
+{level:2,levelName:"Básico",topic:"Trabajo negativo",tag:"Trabajo",prompt:"Una fuerza de resistencia de 40 N actúa en sentido contrario al movimiento durante un desplazamiento de 9 m. ¿Qué trabajo realiza esa fuerza?",data:"F = 40 N<br>d = 9 m<br>θ = 180°<br>Incógnita: W (J)",unit:"J",answer:-360,tol:0.01,hint:"Para θ = 180°, cos(θ) = −1; por eso W = −F·d."},
+
+{level:3,levelName:"Intermedio",topic:"Potencia y rapidez",tag:"Potencia",prompt:"Un motor ejerce una fuerza de 200 N sobre una carga que se mueve a 4 m/s en la misma dirección. ¿Qué potencia desarrolla?",data:"F = 200 N<br>v = 4 m/s<br>θ = 0°<br>Incógnita: P (W)",unit:"W",answer:800,tol:0.1,hint:"Cuando la fuerza va en la dirección del movimiento, utiliza P = F·v."},
+{level:3,levelName:"Intermedio",topic:"Conversión de potencia",tag:"Conversión",prompt:"Un motor tiene una potencia de 2,4 kW. Expresa esa potencia en watts.",data:"P = 2,4 kW<br>1 kW = 1000 W<br>Incógnita: P (W)",unit:"W",answer:2400,tol:0.01,hint:"Multiplica 2,4 por 1000 para convertir de kW a W."},
+{level:3,levelName:"Intermedio",topic:"Conversión de potencia",tag:"Conversión",prompt:"Un motor tiene una potencia de 3 hp. Exprésala en watts usando 1 hp = 746 W.",data:"P = 3 hp<br>1 hp = 746 W<br>Incógnita: P (W)",unit:"W",answer:2238,tol:0.1,hint:"Multiplica la potencia en hp por 746."},
+{level:3,levelName:"Intermedio",topic:"Trabajo contra la gravedad",tag:"Trabajo",prompt:"Una grúa eleva una carga de 12 kg hasta una altura de 5 m a velocidad constante. ¿Qué trabajo realiza la fuerza de elevación contra la gravedad? Usa g = 9,8 m/s².",data:"m = 12 kg<br>h = 5 m<br>g = 9,8 m/s²<br>Incógnita: W (J)",unit:"J",answer:588,tol:0.1,hint:"Calcula W = m·g·h."},
+{level:3,levelName:"Intermedio",topic:"Trabajo contra la gravedad",tag:"Trabajo",prompt:"Un objeto de 35 kg se eleva 2 m a velocidad constante. Calcula el trabajo realizado por la fuerza de elevación. Usa g = 9,8 m/s².",data:"m = 35 kg<br>h = 2 m<br>g = 9,8 m/s²<br>Incógnita: W (J)",unit:"J",answer:686,tol:0.1,hint:"El trabajo de elevación es W = m·g·h."},
+{level:3,levelName:"Intermedio",topic:"Potencia al elevar",tag:"Potencia",prompt:"Una plataforma eleva una masa de 60 kg hasta una altura de 4 m en 8 s. ¿Cuál es la potencia media útil? Usa g = 9,8 m/s².",data:"m = 60 kg<br>h = 4 m<br>t = 8 s<br>g = 9,8 m/s²<br>Incógnita: P (W)",unit:"W",answer:294,tol:0.1,hint:"Primero calcula W = m·g·h y luego P = W/t."},
+
+{level:4,levelName:"Avanzado",topic:"Tiempo de elevación",tag:"Trabajo · Potencia",prompt:"Un elevador levanta una masa de 80 kg hasta una altura de 5 m con una potencia útil constante de 980 W. ¿Cuánto tiempo tarda? Usa g = 9,8 m/s².",data:"m = 80 kg<br>h = 5 m<br>P = 980 W<br>g = 9,8 m/s²<br>Incógnita: t (s)",unit:"s",answer:4,tol:0.05,hint:"Calcula primero W = m·g·h. Después despeja t = W/P."},
+{level:4,levelName:"Avanzado",topic:"Despeje de masa",tag:"Potencia",prompt:"Un motor eleva una carga verticalmente a velocidad constante de 2 m/s y desarrolla una potencia útil de 1960 W. ¿Qué masa eleva? Usa g = 9,8 m/s².",data:"P = 1960 W<br>v = 2 m/s<br>g = 9,8 m/s²<br>Incógnita: m (kg)",unit:"kg",answer:100,tol:0.1,hint:"Utiliza P = m·g·v y despeja m = P/(g·v)."},
+{level:4,levelName:"Avanzado",topic:"Trabajo neto",tag:"Trabajo",prompt:"Una caja se desplaza 12 m. Una persona ejerce una fuerza de 90 N a favor del movimiento y el rozamiento ejerce 30 N en sentido contrario. ¿Cuál es el trabajo neto?",data:"F aplicada = 90 N, θ = 0°<br>F de rozamiento = 30 N, θ = 180°<br>d = 12 m<br>Incógnita: W neto (J)",unit:"J",answer:720,tol:0.1,hint:"Calcula los trabajos por separado: el de la fuerza aplicada es positivo y el del rozamiento negativo. Súmalos."},
+{level:4,levelName:"Avanzado",topic:"Trabajo neto con dos fuerzas",tag:"Trabajo",prompt:"Una caja recorre 8 m. Una fuerza de 120 N actúa a favor del movimiento y otra de 40 N actúa en sentido contrario. Calcula el trabajo neto realizado por ambas fuerzas.",data:"F₁ = 120 N, θ = 0°<br>F₂ = 40 N, θ = 180°<br>d = 8 m<br>Incógnita: W neto (J)",unit:"J",answer:640,tol:0.1,hint:"W neto = F₁·d + (−F₂·d), porque la segunda fuerza se opone al movimiento."},
+{level:4,levelName:"Avanzado",topic:"Potencia media a partir del trabajo neto",tag:"Potencia",prompt:"Sobre una caja se realiza un trabajo neto de 640 J durante 4 s. ¿Cuál es la potencia media neta?",data:"W neto = 640 J<br>t = 4 s<br>Incógnita: P media (W)",unit:"W",answer:160,tol:0.1,hint:"Utiliza la relación de potencia media: P = W/t."},
+{level:4,levelName:"Avanzado",topic:"Trabajo a partir de la potencia",tag:"Trabajo · Potencia",prompt:"Una máquina funciona con una potencia de 1,5 kW durante 20 s. ¿Qué trabajo realiza? Expresa la respuesta en joules.",data:"P = 1,5 kW<br>t = 20 s<br>1 kW = 1000 W<br>Incógnita: W (J)",unit:"J",answer:30000,tol:0.1,hint:"Convierte primero la potencia a watts. Luego utiliza W = P·t."},
+
+{level:5,levelName:"Integrador",topic:"Fuerza a partir de la potencia",tag:"Potencia",prompt:"Un motor desarrolla 2400 W al mover un objeto a 8 m/s. Si la fuerza del motor es paralela al movimiento, ¿qué fuerza ejerce?",data:"P = 2400 W<br>v = 8 m/s<br>θ = 0°<br>Incógnita: F (N)",unit:"N",answer:300,tol:0.1,hint:"De P = F·v, despeja F = P/v."},
+{level:5,levelName:"Integrador",topic:"Eficiencia",tag:"Potencia",prompt:"Un motor recibe 2400 W de potencia eléctrica y entrega 1800 W de potencia mecánica útil. ¿Cuál es su eficiencia porcentual?",data:"P útil = 1800 W<br>P entrada = 2400 W<br>Incógnita: η (%)",unit:"%",answer:75,tol:0.1,hint:"Eficiencia = (potencia útil / potencia de entrada)·100 %."},
+{level:5,levelName:"Integrador",topic:"Potencia al elevar",tag:"Trabajo · Potencia",prompt:"Una grúa eleva una carga de 45 kg hasta 8 m en 6 s. Calcula la potencia media útil contra la gravedad. Usa g = 9,8 m/s².",data:"m = 45 kg<br>h = 8 m<br>t = 6 s<br>g = 9,8 m/s²<br>Incógnita: P (W)",unit:"W",answer:588,tol:0.1,hint:"Combina ambas relaciones: W = m·g·h y P = W/t."},
+{level:5,levelName:"Integrador",topic:"Trabajo con conversión y tiempo",tag:"Trabajo · Potencia",prompt:"Un motor de 3,2 kW funciona durante 35 s. ¿Cuánto trabajo realiza en ese intervalo? Expresa el resultado en joules.",data:"P = 3,2 kW<br>t = 35 s<br>1 kW = 1000 W<br>Incógnita: W (J)",unit:"J",answer:112000,tol:0.1,hint:"Convierte kW a W y luego calcula W = P·t."},
+{level:5,levelName:"Integrador",topic:"Tiempo de elevación",tag:"Trabajo · Potencia",prompt:"Un motor de 1960 W eleva una carga de 50 kg hasta una altura de 12 m a velocidad constante. ¿Cuánto tiempo tarda? Usa g = 9,8 m/s².",data:"P = 1960 W<br>m = 50 kg<br>h = 12 m<br>g = 9,8 m/s²<br>Incógnita: t (s)",unit:"s",answer:3,tol:0.05,hint:"Calcula W = m·g·h y después despeja t = W/P."},
+{level:5,levelName:"Integrador",topic:"Trabajo neto y potencia media",tag:"Trabajo · Potencia",prompt:"Una caja se desplaza 14 m. Una fuerza de 160 N actúa a favor del movimiento y el rozamiento ejerce 45 N en sentido contrario. Si el desplazamiento ocurre en 7 s, calcula la potencia media neta.",data:"F aplicada = 160 N, θ = 0°<br>F de rozamiento = 45 N, θ = 180°<br>d = 14 m<br>t = 7 s<br>Incógnita: P media neta (W)",unit:"W",answer:230,tol:0.1,hint:"Calcula el trabajo neto sumando el trabajo positivo y el negativo. Después divide ese trabajo neto por el tiempo."}
+];
+
+// Banco conceptual organizado en 5 niveles de dificultad (6 preguntas por nivel).
+const $=id=>document.getElementById(id);
+const knowledgeQuestions = [{"level":1,"levelName":"Inicial","topic":"Concepto de trabajo","question":"¿Qué describe el trabajo mecánico realizado por una fuerza?","options":["El cansancio de quien aplica la fuerza.","Una transferencia de energía asociada a una fuerza y un desplazamiento.","El tiempo durante el cual actúa una fuerza.","La masa total del objeto."],"correct":1,"explain":"El trabajo mecánico expresa la energía transferida por una fuerza cuando hay desplazamiento con componente de fuerza en su dirección. El esfuerzo físico por sí solo no lo determina.","source":"Trabajo mecánico, pp. 2–5"},{"level":1,"levelName":"Inicial","topic":"Condición necesaria","question":"Una persona empuja un muro que permanece inmóvil. ¿Qué ocurre con el trabajo mecánico de esa fuerza sobre el muro?","options":["Es positivo porque se aplica fuerza.","Es negativo porque el muro se resiste.","Es cero porque no hay desplazamiento.","Depende únicamente de cuánto se canse la persona."],"correct":2,"explain":"En W = F·d·cos(θ), si d = 0, el trabajo de la fuerza es 0 J, aunque exista esfuerzo muscular.","source":"Trabajo mecánico, pp. 2, 5 y 13"},{"level":1,"levelName":"Inicial","topic":"Unidades","question":"¿Cuál es la unidad del Sistema Internacional para el trabajo mecánico?","options":["Newton (N).","Watt (W).","Segundo (s).","Joule (J)."],"correct":3,"explain":"El trabajo se mide en joules (J). Un joule equivale a un newton por metro (1 J = 1 N·m).","source":"Trabajo mecánico, p. 6"},{"level":1,"levelName":"Inicial","topic":"Concepto de potencia","question":"¿Qué magnitud indica la rapidez con que se realiza trabajo mecánico?","options":["La potencia.","La masa.","La distancia.","La fuerza neta."],"correct":0,"explain":"La potencia media relaciona el trabajo realizado con el tiempo empleado: P = W/t.","source":"Potencia mecánica, pp. 2 y 4"},{"level":1,"levelName":"Inicial","topic":"Unidades de potencia","question":"¿Qué significa que una máquina desarrolle una potencia de 1 watt?","options":["Que ejerce una fuerza de 1 N.","Que desplaza un cuerpo 1 m.","Que realiza 1 J de trabajo por segundo.","Que utiliza 1 J por cada metro recorrido."],"correct":2,"explain":"1 W = 1 J/s: el watt expresa una tasa de transferencia de energía.","source":"Potencia mecánica, p. 4"},{"level":1,"levelName":"Inicial","topic":"Trabajo y tiempo","question":"Dos máquinas realizan el mismo trabajo útil, pero una tarda menos. ¿Cuál tiene mayor potencia media?","options":["La que tarda más.","La que tarda menos.","Ambas tienen distinta energía pero igual potencia.","No es posible compararlas si no conocemos su masa."],"correct":1,"explain":"Al mantener el trabajo constante, P = W/t aumenta cuando el tiempo disminuye.","source":"Potencia mecánica, p. 2"},{"level":2,"levelName":"Básico","topic":"Trabajo positivo","question":"Una fuerza actúa en la misma dirección y sentido que el desplazamiento (θ = 0°). ¿Qué signo tiene su trabajo?","options":["Negativo.","Nulo.","No se puede determinar.","Positivo."],"correct":3,"explain":"Para θ = 0°, cos(0°) = 1; la fuerza realiza trabajo positivo y transfiere energía al objeto.","source":"Trabajo mecánico, pp. 7–8"},{"level":2,"levelName":"Básico","topic":"Trabajo nulo","question":"Si una fuerza es perpendicular al desplazamiento (θ = 90°), ¿qué trabajo realiza esa fuerza?","options":["Cero.","Siempre positivo.","Siempre negativo.","Igual a F·d."],"correct":0,"explain":"cos(90°) = 0, por lo que W = F·d·0 = 0. Esto se refiere al trabajo de esa fuerza, no necesariamente al trabajo total.","source":"Trabajo mecánico, pp. 7 y 10"},{"level":2,"levelName":"Básico","topic":"Trabajo negativo","question":"Una fuerza se opone exactamente al desplazamiento (θ = 180°). ¿Cómo es su trabajo?","options":["Positivo, porque hay desplazamiento.","Nulo, porque la fuerza es constante.","Negativo, porque cos(180°) = −1.","Igual a la potencia del objeto."],"correct":2,"explain":"Para θ = 180°, W = −F·d. Es el caso característico de una fuerza resistente, como el rozamiento.","source":"Trabajo mecánico, pp. 7 y 9"},{"level":2,"levelName":"Básico","topic":"Interpretación del ángulo","question":"En la expresión W = F·d·cos(θ), ¿entre qué magnitudes se mide θ?","options":["Entre la masa y la fuerza.","Entre la fuerza y el desplazamiento.","Entre la velocidad y el tiempo.","Entre el peso y la masa."],"correct":1,"explain":"El ángulo θ se define entre el vector fuerza y el vector desplazamiento. Por eso determina qué componente de la fuerza realiza trabajo.","source":"Trabajo mecánico, p. 5"},{"level":2,"levelName":"Básico","topic":"Mochila en movimiento","question":"Una persona camina horizontalmente a altura constante sosteniendo una mochila. ¿Qué trabajo realiza la fuerza vertical de sostén sobre la mochila?","options":["Positivo, porque la mochila se mueve.","Negativo, porque actúa la gravedad.","Depende solo del peso de la mochila.","Nulo, porque fuerza y desplazamiento son perpendiculares."],"correct":3,"explain":"La fuerza vertical de sostén forma 90° con el desplazamiento horizontal. Su trabajo es cero, aunque otras fuerzas puedan intervenir.","source":"Trabajo mecánico, pp. 7 y 10"},{"level":2,"levelName":"Básico","topic":"Fuerza resistente","question":"Una patineta avanza hacia la derecha y la fuerza de roce actúa hacia la izquierda. ¿Qué afirmación es correcta?","options":["El roce realiza trabajo negativo.","El roce realiza trabajo positivo.","El roce realiza trabajo nulo porque no es una fuerza motriz.","El roce no puede modificar la energía del sistema."],"correct":0,"explain":"El roce se opone al desplazamiento (180°) y realiza trabajo negativo, asociado a transferencia de energía hacia formas como energía térmica.","source":"Trabajo mecánico, p. 9"},{"level":3,"levelName":"Intermedio","topic":"Signos y transferencia","question":"¿Cuál de las siguientes asociaciones es correcta para una fuerza individual?","options":["Trabajo positivo: siempre disminuye la energía cinética.","Trabajo negativo: necesariamente aumenta la energía cinética.","Trabajo positivo: transfiere energía a favor del desplazamiento.","Trabajo nulo: significa que no existe ninguna fuerza."],"correct":2,"explain":"El signo del trabajo indica el sentido de la transferencia de energía debida a esa fuerza. Trabajo nulo no significa ausencia de fuerza.","source":"Trabajo mecánico, pp. 7–10"},{"level":3,"levelName":"Intermedio","topic":"Trabajo neto","question":"Sobre una caja actúan dos fuerzas horizontales iguales y opuestas mientras se desplaza. ¿Cómo se relacionan sus trabajos?","options":["Ambos son positivos.","Son de igual magnitud y signos opuestos.","Ambos son nulos.","Ambos son negativos."],"correct":1,"explain":"Una fuerza está a 0° y la otra a 180° respecto del desplazamiento: sus trabajos se cancelan si las magnitudes son iguales.","source":"Trabajo mecánico, pp. 7–9; aplicación de W = F·d·cos(θ)"},{"level":3,"levelName":"Intermedio","topic":"Trabajo y energía","question":"¿Por qué se describe el trabajo mecánico como energía en tránsito?","options":["Porque todo objeto en reposo posee trabajo almacenado.","Porque el trabajo es una forma de masa.","Porque el trabajo equivale siempre al calor.","Porque cuantifica energía transferida mediante una fuerza durante un desplazamiento."],"correct":3,"explain":"El trabajo no es algo que un objeto almacene: representa transferencia de energía entre sistemas por acción de fuerzas.","source":"Trabajo mecánico, p. 4"},{"level":3,"levelName":"Intermedio","topic":"Potencia en movimiento","question":"¿Cuándo es válida directamente la relación P = F·v para la potencia de una fuerza?","options":["Cuando la fuerza es paralela y tiene el mismo sentido que la velocidad.","Cuando la fuerza es perpendicular a la velocidad.","Cuando no existe desplazamiento.","Cuando la fuerza se opone al movimiento y se ignora su signo."],"correct":0,"explain":"La relación general para la potencia de una fuerza es P = F·v·cos(θ). P = F·v se aplica directamente cuando θ = 0°.","source":"Potencia mecánica, pp. 3 y 5"},{"level":3,"levelName":"Intermedio","topic":"Conversión de potencia","question":"¿Qué equivalencia entre unidades de potencia aparece en el material?","options":["1 kW = 100 W.","1 kW = 10 W.","1 kW = 1000 W.","1 kW = 746 W."],"correct":2,"explain":"El prefijo kilo equivale a mil: 1 kilowatt = 1000 watts.","source":"Potencia mecánica, pp. 6 y 12"},{"level":3,"levelName":"Intermedio","topic":"hp y CV","question":"¿Cuál afirmación distingue correctamente hp y CV según las conversiones de las diapositivas?","options":["Ambos equivalen exactamente a 1000 W.","1 hp ≈ 746 W y 1 CV ≈ 736 W.","1 hp equivale a 736 W y 1 CV a 746 W.","Son unidades de trabajo mecánico, no de potencia."],"correct":1,"explain":"El material distingue el caballo de fuerza (hp ≈ 746 W) del caballo de vapor (CV ≈ 736 W).","source":"Potencia mecánica, p. 6"},{"level":4,"levelName":"Avanzado","topic":"Comparación de máquinas","question":"Dos motores realizan 2000 J de trabajo útil. El motor A tarda 10 s y el B tarda 5 s. ¿Qué conclusión es correcta?","options":["A tiene el doble de potencia que B.","Ambos tienen la misma potencia.","B realiza el doble de trabajo que A.","B desarrolla el doble de potencia media que A."],"correct":3,"explain":"Al realizar igual trabajo en la mitad del tiempo, el motor B desarrolla el doble de potencia media.","source":"Potencia mecánica, pp. 2 y 4"},{"level":4,"levelName":"Avanzado","topic":"Eficiencia mecánica","question":"¿Por qué la potencia útil de una máquina real suele ser menor que la potencia que recibe?","options":["Porque parte de la energía se transfiere en formas no útiles, como calor por fricción.","Porque la potencia se transforma en masa.","Porque el tiempo deja de influir en la potencia.","Porque el trabajo útil siempre es negativo."],"correct":0,"explain":"La eficiencia compara potencia útil y entregada. En máquinas reales existen pérdidas asociadas a fricción y otras transferencias no útiles.","source":"Potencia mecánica, p. 8"},{"level":4,"levelName":"Avanzado","topic":"Eficiencia porcentual","question":"Un motor entrega 80 % de la potencia recibida como potencia útil. ¿Cuál es la interpretación correcta?","options":["El motor crea un 20 % adicional de energía.","La potencia útil es mayor que la de entrada.","Aproximadamente 20 % de la potencia de entrada no se aprovecha como potencia útil.","El motor realiza trabajo nulo."],"correct":2,"explain":"La eficiencia del 80 % significa que 80 de cada 100 unidades de potencia de entrada se aprovechan como potencia útil.","source":"Potencia mecánica, p. 8"},{"level":4,"levelName":"Avanzado","topic":"Fuerzas simultáneas","question":"Una caja se mueve horizontalmente. Una fuerza tira a favor del movimiento, otra se opone y una tercera es perpendicular. ¿Qué afirmación es correcta?","options":["Las tres fuerzas realizan trabajo positivo.","La perpendicular no aporta trabajo; las otras pueden aportar trabajos de signos opuestos.","La fuerza opuesta realiza trabajo nulo.","La fuerza perpendicular siempre domina el trabajo neto."],"correct":1,"explain":"Con ángulos 0°, 180° y 90°, los trabajos son respectivamente positivo, negativo y cero. El trabajo neto se obtiene sumándolos.","source":"Trabajo mecánico, pp. 7–10"},{"level":4,"levelName":"Avanzado","topic":"Elevación de cargas","question":"Una grúa eleva una carga verticalmente a velocidad constante. ¿Qué afirmación sobre el trabajo de la fuerza de elevación y el peso es correcta?","options":["Ambos realizan trabajo positivo.","Ambos realizan trabajo negativo.","La fuerza de elevación realiza trabajo nulo.","La elevación realiza trabajo positivo y el peso trabajo negativo, de igual magnitud."],"correct":3,"explain":"En una elevación vertical a velocidad constante, la fuerza de elevación va a favor del desplazamiento y el peso en contra; sus trabajos se compensan.","source":"Potencia mecánica, p. 9; Trabajo mecánico, p. 7"},{"level":4,"levelName":"Avanzado","topic":"Trabajo neto e interpretación","question":"Un objeto se desplaza mientras el trabajo de una fuerza es positivo y el de otra es negativo, con igual magnitud. ¿Qué se puede afirmar?","options":["El trabajo neto de esas dos fuerzas es cero.","Ninguna de las dos fuerzas realiza trabajo.","El objeto necesariamente está detenido.","Las dos fuerzas tienen ángulo de 90° con el desplazamiento."],"correct":0,"explain":"Trabajos iguales y opuestos suman cero. Esto no implica ausencia de movimiento: el objeto puede desplazarse con velocidad constante.","source":"Trabajo mecánico, pp. 7–10"},{"level":5,"levelName":"Integrador","topic":"Caso de la grúa","question":"En el caso de estudio, una grúa eleva 30 sacos de 50 kg cada uno hasta 10 m en 2 s. ¿Por qué debe considerarse la masa total de los sacos?","options":["Porque el tiempo es independiente de la carga.","Porque el peso solo depende de la altura.","Porque el trabajo de elevación depende del peso total que se desplaza verticalmente.","Porque cada saco genera potencia sin que la grúa realice trabajo."],"correct":2,"explain":"La fuerza de elevación debe equilibrar el peso de la carga total a velocidad constante. El trabajo útil es m_total·g·h y la potencia media, ese trabajo dividido por el tiempo.","source":"Potencia mecánica, p. 9"},{"level":5,"levelName":"Integrador","topic":"Interpretación de potencia","question":"Dos máquinas tienen la misma potencia media, pero una funciona durante más tiempo. ¿Qué conclusión está justificada si mantienen esa potencia?","options":["La que funciona menos tiempo realiza más trabajo.","La que funciona más tiempo realiza más trabajo.","Ambas realizan necesariamente el mismo trabajo.","Ninguna puede realizar trabajo mecánico."],"correct":1,"explain":"Como W = P·t, a igual potencia media, un mayor tiempo corresponde a mayor trabajo transferido.","source":"Potencia mecánica, pp. 4 y 12"},{"level":5,"levelName":"Integrador","topic":"Diseño experimental","question":"Un grupo quiere comprobar cómo cambia la potencia media al subir la misma carga a la misma altura en distintos tiempos. ¿Qué diseño permite aislar el efecto del tiempo?","options":["Cambiar a la vez la masa, la altura y el tiempo.","Medir solo la masa, sin registrar el tiempo.","Variar la altura y mantener desconocida la carga.","Mantener masa y altura constantes y registrar el tiempo de cada subida."],"correct":3,"explain":"Para estudiar P = m·g·h/t y aislar el efecto del tiempo, el trabajo útil debe mantenerse constante: misma masa y misma altura.","source":"Aplicación del modelo de potencia, Potencia mecánica, pp. 4 y 9"},{"level":5,"levelName":"Integrador","topic":"Conservación de energía","question":"Un motor presenta pérdidas por fricción. ¿Cuál interpretación respeta la conservación de la energía?","options":["Parte de la energía se transfiere a formas menos útiles, como energía térmica.","La energía perdida desaparece del universo.","La fricción crea potencia útil adicional.","La energía solo se conserva si la eficiencia es 100 %."],"correct":0,"explain":"Las pérdidas de eficiencia no implican destrucción de energía: representan transferencias a formas no aprovechadas como trabajo útil.","source":"Potencia mecánica, p. 8; Trabajo mecánico, p. 9"},{"level":5,"levelName":"Integrador","topic":"Caso de potencia biológica","question":"El material describe un avión impulsado por un piloto que entregaba aproximadamente 190 W de potencia continua. ¿Qué conclusión es más rigurosa?","options":["190 W demuestra que cualquier avión puede volar con esa potencia.","La potencia es irrelevante si el piloto pedalea.","El vuelo fue posible por la combinación de potencia humana y un diseño de alta eficiencia.","El piloto no realizó trabajo mecánico porque la potencia era baja."],"correct":2,"explain":"El caso Gossamer Albatross destaca la interacción entre una potencia humana modesta y un diseño muy eficiente. No permite generalizar esa potencia a cualquier aeronave.","source":"Potencia mecánica, p. 11"},{"level":5,"levelName":"Integrador","topic":"Evaluación de eficiencia","question":"Un equipo quiere calcular la eficiencia de un motor. ¿Qué par de datos es imprescindible para aplicar la expresión presentada en el material?","options":["Masa del motor y color de su carcasa.","Potencia útil entregada y potencia total de entrada, medidas en las mismas unidades.","Tiempo de uso y número de trabajadores, únicamente.","Distancia recorrida y temperatura ambiente, únicamente."],"correct":1,"explain":"La eficiencia se determina con η = (P_útil/P_entrada)·100 %. Se necesitan ambas potencias en unidades compatibles.","source":"Potencia mecánica, pp. 8 y 12"}];
+let knowledgeCurrent=0;
+const knowledgeResponses=new Array(knowledgeQuestions.length).fill(null);
+let currentMode='home';
+function openMode(mode){
+ currentMode=mode;
+ $('home').hidden=true;
+ $('learningLayout').hidden=false;
+ $('headerHome').hidden=false;
+ $('practiceMain').hidden=mode!=='exercises';
+ $('knowledgeMain').hidden=mode!=='knowledge';
+ if(mode==='exercises')render(); else renderKnowledge();
+ window.scrollTo({top:0,behavior:'instant'});
+}
+function goHome(){
+ currentMode='home';
+ $('home').hidden=false;
+ $('learningLayout').hidden=true;
+ $('headerHome').hidden=true;
+ window.scrollTo({top:0,behavior:'instant'});
+}
+function knowledgeCount(){return knowledgeResponses.filter(r=>r!==null).length;}
+function knowledgeCorrectCount(){return knowledgeResponses.filter((r,i)=>r===knowledgeQuestions[i].correct).length;}
+function renderKnowledge(){
+ const q=knowledgeQuestions[knowledgeCurrent];
+ $('knowledgeView').hidden=false;
+ $('knowledgeCompletion').style.display='none';
+ $('knowledgeHeading').textContent=`Pregunta ${knowledgeCurrent+1} de ${knowledgeQuestions.length}`;
+ $('knowledgeNum').textContent=knowledgeCurrent+1;
+ $('knowledgeTopic').textContent=q.topic;
+ $('knowledgeLevel').textContent=`Nivel ${q.level} · ${q.levelName}`;
+ $('knowledgePrompt').textContent=q.question;
+ $('knowledgeSource').textContent=`Referencia: ${q.source}`;
+ $('knowledgeProgressText').textContent=`${knowledgeCount()} / ${knowledgeQuestions.length}`;
+ $('knowledgeBar').style.width=(knowledgeCount()/knowledgeQuestions.length*100)+'%';
+ $('knowledgePrev').disabled=knowledgeCurrent===0;
+ const answer=knowledgeResponses[knowledgeCurrent];
+ $('knowledgeNext').disabled=answer===null;
+ $('knowledgeNext').textContent=knowledgeCurrent===knowledgeQuestions.length-1?'Ver resultados →':'Siguiente →';
+ $('knowledgeCheck').disabled=answer!==null;
+ $('knowledgeCheck').textContent=answer===null?'Enviar respuesta':'Respuesta enviada';
+ const choices=$('knowledgeChoices');
+ choices.replaceChildren();
+ q.options.forEach((option,i)=>{
+   const label=document.createElement('label');label.className='choice';
+   const input=document.createElement('input');input.type='radio';input.name='knowledgeOption';input.value=String(i);input.disabled=answer!==null;
+   input.checked=answer===i;
+   const letter=document.createElement('span');letter.className='choice-letter';letter.textContent='ABCD'[i]+'.';
+   const desc=document.createElement('span');desc.className='choice-text';desc.textContent=option;
+   label.append(input,letter,desc);
+   if(answer!==null){
+      label.classList.add('locked');
+      if(i===q.correct)label.classList.add('correct');
+      if(i===answer&&answer!==q.correct)label.classList.add('incorrect');
+   }else{
+      input.addEventListener('change',()=>{
+        choices.querySelectorAll('.choice').forEach(c=>c.classList.toggle('selected',c.querySelector('input').checked));
+      });
+   }
+   choices.append(label);
+ });
+ showKnowledgeFeedback(answer);
+}
+function showKnowledgeFeedback(answer){
+ const el=$('knowledgeFeedback');
+ if(answer===null){el.className='feedback';el.replaceChildren();return;}
+ const q=knowledgeQuestions[knowledgeCurrent],good=answer===q.correct;
+ el.className='feedback '+(good?'good':'bad');el.replaceChildren();
+ const heading=document.createElement('strong');heading.textContent=good?'Respuesta correcta.':'Respuesta incorrecta.';
+ const correct=document.createElement('p');correct.textContent=`Alternativa correcta: ${'ABCD'[q.correct]}. ${q.options[q.correct]}`;
+ const reason=document.createElement('p');reason.textContent=q.explain;
+ el.append(heading,correct,reason);
+}
+function submitKnowledge(event){
+ event.preventDefault();
+ if(knowledgeResponses[knowledgeCurrent]!==null)return;
+ const checked=$('knowledgeChoices').querySelector('input[name="knowledgeOption"]:checked');
+ if(!checked){
+  const el=$('knowledgeFeedback');el.className='feedback bad';el.textContent='Selecciona una alternativa antes de enviar.';return;
+ }
+ knowledgeResponses[knowledgeCurrent]=Number(checked.value);
+ renderKnowledge();
+ if(knowledgeCount()===knowledgeQuestions.length){
+  // La última respuesta permanece visible hasta que se pulse «Ver resultados».
+  $('knowledgeNext').disabled=false;
+  $('knowledgeNext').textContent='Ver resultados →';
+ }
+}
+function finishKnowledge(){
+ $('knowledgeView').hidden=true;
+ $('knowledgeCompletion').style.display='block';
+ const n=knowledgeCorrectCount();
+ $('knowledgeCorrectCount').textContent=`${n}/${knowledgeQuestions.length}`;
+ $('knowledgePercent').textContent=Math.round(n/knowledgeQuestions.length*100)+'%';
+ $('knowledgeAttempts').textContent=knowledgeCount();
+}
+$('openExercises').addEventListener('click',()=>openMode('exercises'));
+$('openKnowledge').addEventListener('click',()=>openMode('knowledge'));
+$('headerHome').addEventListener('click',goHome);
+$('knowledgeForm').addEventListener('submit',submitKnowledge);
+$('knowledgePrev').addEventListener('click',()=>{if(knowledgeCurrent>0){knowledgeCurrent--;renderKnowledge();}});
+$('knowledgeNext').addEventListener('click',()=>{
+ if(knowledgeResponses[knowledgeCurrent]===null)return;
+ if(knowledgeCurrent===knowledgeQuestions.length-1){finishKnowledge();return;}
+ knowledgeCurrent++;renderKnowledge();
+ $('knowledgeNext').textContent='Siguiente →';
+});
+$('knowledgeRestart').addEventListener('click',()=>{
+ knowledgeResponses.fill(null);knowledgeCurrent=0;renderKnowledge();
+ $('knowledgeNext').textContent='Siguiente →';
+});
+$('knowledgeHome').addEventListener('click',goHome);
+
+let current=0, attempts=0;
+const solved=new Array(exercises.length).fill(false);
+function fmt(n){return n.toLocaleString('es-CL',{maximumFractionDigits:2});}
+function render(){
+ const e=exercises[current];
+ $('heading').textContent=`Ejercicio ${current+1} de ${exercises.length}`;
+ $('exnum').textContent=current+1;$('topic').textContent=e.topic;$('subtopic').textContent=`Nivel ${e.level} · ${e.levelName}`;$('tag').textContent=e.tag;
+ $('prompt').textContent=e.prompt;$('data').innerHTML=e.data;$('unit').textContent=e.unit;$('answer').value='';
+ $('feedback').className='feedback';$('feedback').textContent='';
+ $('hint').textContent=e.hint;$('check').disabled=solved[current];$('check').textContent=solved[current]?'✓ Respuesta correcta':'✓ Verificar respuesta';
+ $('answer').disabled=solved[current];$('prev').disabled=current===0;
+ $('next').disabled=!solved[current]||current===exercises.length-1;
+ $('progressText').textContent=`${solved.filter(Boolean).length} / ${exercises.length} correctos`;
+ $('bar').style.width=(solved.filter(Boolean).length/exercises.length*100)+'%';
+ if(solved[current])showGood(true);
+}
+function parseAnswer(s){return Number(s.trim().replace(/\s/g,'').replace(',','.'));}
+function showGood(fromSaved=false){
+ const e=exercises[current];$('feedback').className='feedback good';
+ $('feedback').textContent=`¡Correcto! ${fromSaved?'Ya habías resuelto este ejercicio correctamente.':'Tu respuesta es correcta.'} Puedes avanzar al siguiente ejercicio.`;
+}
+function check(){
+ const e=exercises[current], raw=$('answer').value, val=parseAnswer(raw);
+ if(raw.trim()===''||!Number.isFinite(val)){
+  $('feedback').className='feedback bad';$('feedback').textContent='Escribe un valor numérico antes de verificar.';return;
+ }
+ attempts++;
+ if(Math.abs(val-e.answer)<=e.tol){
+  if(!solved[current])solved[current]=true;
+  showGood();$('check').disabled=true;$('answer').disabled=true;
+  $('next').disabled=current===exercises.length-1;
+  $('progressText').textContent=`${solved.filter(Boolean).length} / ${exercises.length} correctos`;
+  $('bar').style.width=(solved.filter(Boolean).length/exercises.length*100)+'%';
+  if(solved.every(Boolean)){setTimeout(finish,700);}
+ }else{
+  $('feedback').className='feedback bad';
+  $('feedback').textContent='Todavía no es correcto. Revisa la fórmula, las operaciones y las unidades. Puedes volver a intentarlo; el siguiente ejercicio permanece bloqueado.';
+ }
+}
+function finish(){
+ $('exerciseView').style.display='none';$('completion').style.display='block';
+ $('doneCount').textContent=`${solved.filter(Boolean).length}/${exercises.length}`;$('attemptCount').textContent=attempts;
+}
+$('check').addEventListener('click',check);
+$('answer').addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('check').disabled)check();});
+$('next').addEventListener('click',()=>{if(solved[current]&&current<exercises.length-1){current++;render();}});
+$('prev').addEventListener('click',()=>{if(current>0){current--;render();}});
+$('restart').addEventListener('click',()=>{current=0;attempts=0;solved.fill(false);$('completion').style.display='none';$('exerciseView').style.display='block';render();});
+render();
+</script>
+</body>
+</html>
